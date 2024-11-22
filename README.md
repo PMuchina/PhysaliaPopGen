@@ -1,1 +1,2 @@
 # Physalia-course: Introduction to population genomics (November2024)
+This GitHub repository serves as the primary resource hub for participants of the Physalia workshop on the introduction to population genomics. Over the course of the workshop, participants are expected to gain hands-on experience with state-of-the-art computational tools and techniques for analyzing large-scale genomic data and reconstructing evolutionary and demographic histories.<br>
