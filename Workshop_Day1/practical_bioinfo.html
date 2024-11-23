@@ -75,12 +75,11 @@ section.footnotes::before {
 </head>
 <body>
 <div class="frontmatter">
-<div class="title"><h1></h1></div>
+<div class="title"><h1>Physalia-course: Population genomics</h1></div>
 <div class="author"><h2></h2></div>
 <div class="date"><h3></h3></div>
 </div>
 <div class="body">
-<h1 id="physalia-course-population-genomics">Physalia-course: Population genomics</h1>
 <p><i>Thibault Leroy (<a href="mailto:thibault.leroy@inrae.fr">thibault.leroy@inrae.fr</a>)</i></p>
 <h2 id="part-1-bioinformaticsnovember-25-2024">Part 1: Bioinformatics<br>November 25, 2024</h2>
 <h3 id="general-context">General context</h3>
@@ -267,7 +266,7 @@ Qrob_Chr01 10 T 0 <em> </em> 4 …. HFF@ 3 … HHF<br></p>
 <p>Note that it is very easy to extract depth of coverage from a mpileup, e.g.:<br>
 <code>awk ‘{print $1”\t”$2”\t”$4”\t”$7”\t”$10}’ Oak_3pools.mpileup.first100kb &gt; Oak_3pools.mpileup.first100kb.cov</code><br></p>
 <p>Anyway, a mpileup can then be summarized in a synchronized mpileup with popoolation2, please use the command below: <br>
-<code>mpileup2sync.pl –fastq-type sanger –input Oak_3pools.mpileup.first100kb –output Oak_3pools.mpileup.first100kb.sync</code><br></p>
+<code>mpileup2sync.pl --fastq-type sanger --input Oak_3pools.mpileup.first100kb --output Oak_3pools.mpileup.first100kb.sync</code><br></p>
 <p>Here is an example of the beginning of a synchronized mpileup file: <br>
 Qrob_Chr01 1 T 0:0:0:0:0:0 0:1:0:0:0:0 0:0:0:0:0:0 <br>
 Qrob_Chr01 2 C 0:0:0:0:0:0 0:0:1:0:0:0 0:0:0:0:0:0 <br>
@@ -297,11 +296,11 @@ Qrob_Chr01 10 T 0:0:0:0:0:0 0:4:0:0:0:0 0:3:0:0:0:0 <br>
 <code>  gatk AddOrReplaceReadGroups \</code><br>
 <code>   -I subset_”$name”.bam  \</code><br>
 <code>   -O subset_”$name”.RG.bam  \</code><br>
-<code>   –RGID “$name”  \</code><br>
-<code>   –RGLB lib1 \</code><br>
-<code>   –RGPL ILLUMINA \</code><br>
-<code>   –RGPU unit1 \</code><br>
-<code>   –RGSM “$name”</code><br>
+<code>   --RGID “$name”  \</code><br>
+<code>   --RGLB lib1 \</code><br>
+<code>   --RGPL ILLUMINA \</code><br>
+<code>   --RGPU unit1 \</code><br>
+<code>   --RGSM “$name”</code><br>
 <code>done</code></p>
 <p>GATK requires that all bam are indexed.<br>
 <code>for i in *RG.bam; do </code><br>
@@ -321,11 +320,11 @@ Qrob_Chr01 10 T 0:0:0:0:0:0 0:4:0:0:0:0 0:3:0:0:0:0 <br>
 <i>Note: In the code above, we used the “-L” option to target a specific region of a scaffold, which helps to speed up the computations. Without this option, the .g.vcf.gz files would be generated for the entire genome. Despite targeting only a small region of the genome, the process still took several minutes to complete for the five individuals.</i><br></p>
 <p>The second step below involves using CombineGVCFs to merge the individual GVCF files into a single file, preparing the data for joint genotyping across all samples. <br>
 <code>gatk CombineGVCFs -R $REFERENCE \</code><br>
-<code>  –variant ./Calling/subset_Dayri.g.vcf.gz \</code><br>
-<code>  –variant ./Calling/subset_Halawy.g.vcf.gz \</code><br>
-<code>  –variant ./Calling/subset_Hayany.g.vcf.gz \</code><br>
-<code>  –variant ./Calling/subset_Khisab.g.vcf.gz \</code><br>
-<code>  –variant ./Calling/subset_Medjool.g.vcf.gz \</code><br>
+<code>  --variant ./Calling/subset_Dayri.g.vcf.gz \</code><br>
+<code>  --variant ./Calling/subset_Halawy.g.vcf.gz \</code><br>
+<code>  --variant ./Calling/subset_Hayany.g.vcf.gz \</code><br>
+<code>  --variant ./Calling/subset_Khisab.g.vcf.gz \</code><br>
+<code>  --variant ./Calling/subset_Medjool.g.vcf.gz \</code><br>
 <code>-O ./Calling/datepalm.combine.NC_052395.1.g.vcf.gz</code><br></p>
 <p>Then, use GenotypeGVCFs to perform joint genotyping on the combined GVCF file, producing a multisample VCF file with the identified variants across all individuals. <br>
 <code>gatk GenotypeGVCFs \</code><br>
@@ -337,8 +336,8 @@ Qrob_Chr01 10 T 0:0:0:0:0:0 0:4:0:0:0:0 0:3:0:0:0:0 <br>
 <code>  -R $REFERENCE \</code><br>
 <code>  -V ./Calling/datepalm.NC_052395.1.jointvcf.gz \</code><br>
 <code>  -O ./Calling/datepalm.NC_052395.1.jointvcf.filtered.gz \</code><br>
-<code>  –filter-expression “QD &lt; 2.0 || FS &gt; 60.0 || MQ &lt; 40.0” \</code><br>
-<code>  –filter-name “LowQual”</code><br></p>
+<code>  --filter-expression “QD &lt; 2.0 || FS &gt; 60.0 || MQ &lt; 40.0” \</code><br>
+<code>  --filter-name “LowQual”</code><br></p>
 <p><b>QD</b> means Quality by Depth and filters variants with low confidence relative to sequencing depth.<br>
 <b>FS</b> means Fisher Strand Bias and detect strand bias, consistent systematic error in sequencing reads.<br>
 <b>MQ </b>means Mapping Quality and ensures that calling is based on high-confidence alignments.<br>

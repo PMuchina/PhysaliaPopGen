@@ -220,7 +220,7 @@ Note that it is very easy to extract depth of coverage from a mpileup, e.g.:<br>
 
 
 Anyway, a mpileup can then be summarized in a synchronized mpileup with popoolation2, please use the command below: <br>
-<code>mpileup2sync.pl --fastq-type sanger --input Oak_3pools.mpileup.first100kb --output Oak_3pools.mpileup.first100kb.sync</code><br>
+<code>mpileup2sync.pl -\-fastq-type sanger -\-input Oak_3pools.mpileup.first100kb -\-output Oak_3pools.mpileup.first100kb.sync</code><br>
 
 Here is an example of the beginning of a synchronized mpileup file: <br>
 Qrob_Chr01&emsp;1&emsp;T&emsp;0:0:0:0:0:0&emsp;0:1:0:0:0:0&emsp;0:0:0:0:0:0 <br>
@@ -258,11 +258,11 @@ With GATK, it is essential to assign distinct Read Group information for each in
 <code>&emsp; gatk AddOrReplaceReadGroups \\</code><br>
 <code>&emsp;&emsp; -I subset_"$name".bam  \\</code><br>
 <code>&emsp;&emsp; -O subset_"$name".RG.bam  \\</code><br>
-<code>&emsp;&emsp; --RGID "$name"  \\</code><br>
-<code>&emsp;&emsp; --RGLB lib1 \\</code><br>
-<code>&emsp;&emsp; --RGPL ILLUMINA \\</code><br>
-<code>&emsp;&emsp; --RGPU unit1 \\</code><br>
-<code>&emsp;&emsp; --RGSM "$name"</code><br>
+<code>&emsp;&emsp; -\-RGID "$name"  \\</code><br>
+<code>&emsp;&emsp; -\-RGLB lib1 \\</code><br>
+<code>&emsp;&emsp; -\-RGPL ILLUMINA \\</code><br>
+<code>&emsp;&emsp; -\-RGPU unit1 \\</code><br>
+<code>&emsp;&emsp; -\-RGSM "$name"</code><br>
 <code>done</code>
 
 GATK requires that all bam are indexed.<br>
@@ -285,11 +285,11 @@ With GATK, the first step is to use the HaplotypeCaller to generate a GVCF file 
 
 The second step below involves using CombineGVCFs to merge the individual GVCF files into a single file, preparing the data for joint genotyping across all samples. <br>
 <code>gatk CombineGVCFs -R $REFERENCE \\</code><br>
-<code>&emsp; --variant ./Calling/subset_Dayri.g.vcf.gz \\</code><br>
-<code>&emsp; --variant ./Calling/subset_Halawy.g.vcf.gz \\</code><br>
-<code>&emsp; --variant ./Calling/subset_Hayany.g.vcf.gz \\</code><br>
-<code>&emsp; --variant ./Calling/subset_Khisab.g.vcf.gz \\</code><br>
-<code>&emsp; --variant ./Calling/subset_Medjool.g.vcf.gz \\</code><br>
+<code>&emsp; -\-variant ./Calling/subset_Dayri.g.vcf.gz \\</code><br>
+<code>&emsp; -\-variant ./Calling/subset_Halawy.g.vcf.gz \\</code><br>
+<code>&emsp; -\-variant ./Calling/subset_Hayany.g.vcf.gz \\</code><br>
+<code>&emsp; -\-variant ./Calling/subset_Khisab.g.vcf.gz \\</code><br>
+<code>&emsp; -\-variant ./Calling/subset_Medjool.g.vcf.gz \\</code><br>
 <code>-O ./Calling/datepalm.combine.NC_052395.1.g.vcf.gz</code><br>
 
 Then, use GenotypeGVCFs to perform joint genotyping on the combined GVCF file, producing a multisample VCF file with the identified variants across all individuals. <br>
@@ -303,8 +303,8 @@ Lastly, apply VariantFiltration to filter the raw VCF file based on quality metr
 <code>&emsp; -R $REFERENCE \\</code><br>
 <code>&emsp; -V ./Calling/datepalm.NC_052395.1.jointvcf.gz \\</code><br>
 <code>&emsp; -O ./Calling/datepalm.NC_052395.1.jointvcf.filtered.gz \\</code><br>
-<code>&emsp; --filter-expression "QD < 2.0 || FS > 60.0 || MQ < 40.0" \\</code><br>
-<code>&emsp; --filter-name "LowQual"</code><br>
+<code>&emsp; -\-filter-expression "QD < 2.0 || FS > 60.0 || MQ < 40.0" \\</code><br>
+<code>&emsp; -\-filter-name "LowQual"</code><br>
 
 <b>QD</b> means Quality by Depth and filters variants with low confidence relative to sequencing depth.<br>
 <b>FS</b> means Fisher Strand Bias and detect strand bias, consistent systematic error in sequencing reads.<br>
