@@ -105,7 +105,7 @@ Of course [myfile] should be replaced by the name of the file you would like to 
 <i>NOTE: When using scp, you need three arguments: the scp itself, followed by two locations, with each separated by a space. In the previous example, the dot at the end of the command is crucial! It signifies “the current directory” on your local machine. This ensures that the file is placed in the directory where you are currently located.</i><br>
 Assuming that you are user2 and that you want to download the full directory of the cluster, use the “-r” option, e.g. <code>scp -i c2.pem -r user2@[hostname]:~/Share/Day1_bioinfo ~/Physalia-course/ </code>to download all the results in a directory Physalia-course of your own computer (if you want to create this “Physalia-course” directory, type mkdir Physalia-course to create a new directory (mkdir stands for make directory). <br><b>IMPORTANT: If you wish to download the entire repository, please wait the end of the course today to do so!</b> <br> The “~” symbol refers to your home directory. You can navigate into a folder using cd [DIRECTORY] (e.g. cd Physalia-course) and move up one level in the directory structure with “cd ..”. If you are totally unfamiliar with commands like mkdir, cd, ls, or other basic terminal functions, don’t worry! Just inform the instructors via Slack as soon as possible in order to allow us to assist you as much as possible.<br></p>
 <p><b>For today, simply copy the repository from the Share directory to a folder you create in your home directory on the cluster (i.e. no need to use scp to import it to your personal computer)</b><br>
-<code>cp -r /home/ubuntu/Share/Day1_bioinfo/ ~</code><br>
+<code>cp -r ~/Share/Day1_bioinfo/ ~</code><br>
 Up to step 9 of this proposal, we will focus exclusively on the oak data located in the “data-oak” directory within ~/Day1_bioinfo/. Navigate to this directory with:<br>
 <code>cd ~/Day1_bioinfo/data-oak</code><br><br></p>
 <h3 id="step-1-evaluating-the-reference-genome">Step 1: Evaluating the reference genome</h3>
@@ -247,37 +247,37 @@ Do you expect any differences if you use samtools flagstat on the BAM files afte
 <code>ERR3284869ERR3284873_subset_trimmedPE.bam.dedup \</code><br>
 <code>ERR3284873ERR3284873_subset_trimmedPE.bam.dedup \</code><br>
 <code>ERR3284898ERR3284873_subset_trimmedPE.bam.dedup \</code><br>
-<code>&gt; ../Calling/Oak_3pools.mpileup</code><br>
+<code> &gt; ../Calling/Oak_3pools.mpileup</code><br>
 Explanations: <br>
 -q 20 corresponds to the minimum base quality score for including bases in the mpileup <br>
 -Q 30 corresponds to the minimum mapping quality for including reads in the mpileup <br><br>
 The mpileup output is expected to include the following columns: chromosome, position, reference allele (from the reference assembly), read depth for pool 1, sequenced alleles for pool 1 (where “.” indicates that the sequenced allele is the same than the one on the reference genome), and base quality for pool 1. This is followed by the same information for pool 2, and then for pool 3, respectively.<br>
-Qrob_Chr01 1 T 0 <em> </em> 1 ^8. C 0 <em> </em><br>
-Qrob_Chr01 2 C 0 <em> </em> 1 . C 0 <em> </em><br>
-Qrob_Chr01 3 T 0 <em> </em> 1 . C 0 <em> </em><br>
-Qrob_Chr01 4 G 0 <em> </em> 2 .^9. F@ 0 <em> </em><br>
-Qrob_Chr01 5 A 0 <em> </em> 2 .. F@ 0 <em> </em><br>
-Qrob_Chr01 6 A 0 <em> </em> 3 G.^8. F@C 1 ^7. @<br>
-Qrob_Chr01 7 G 0 <em> </em> 3 A.. FFC 3 … FF@<br>
-Qrob_Chr01 8 T 0 <em> </em> 4 …^8. FD@@ 3 … EFB<br>
-Qrob_Chr01 9 A 0 <em> </em> 3 … HEF 3 … FHD<br>
-Qrob_Chr01 10 T 0 <em> </em> 4 …. HFF@ 3 … HHF<br></p>
+<code>Qrob_Chr01	1	T	0	*	*	1	^8.		C		0	*	*</code><br>
+<code>Qrob_Chr01	2	C	0	*	*	1	.		C		0	*	*</code><br>
+<code>Qrob_Chr01	3	T	0	*	*	1	.		C		0	*	*</code><br>
+<code>Qrob_Chr01	4	G	0	*	*	2	.^9.	F@		0	*	*</code><br>
+<code>Qrob_Chr01	5	A	0	*	*	2	..		F@		0	*	*</code><br>
+<code>Qrob_Chr01	6	A	0	*	*	3	G.^8.	F@C		1	^7.	@</code><br>
+<code>Qrob_Chr01	7	G	0	*	*	3	A..		FFC		3	…	FF@</code><br>
+<code>Qrob_Chr01	8	T	0	*	*	4	...^8.	FD@@	3	…	EFB</code><br>
+<code>Qrob_Chr01	9	A	0	*	*	3	...		HEF		3	…	FHD</code><br>
+<code>Qrob_Chr01	10	T	0	*	*	4	....	HFF@	3	…	HHF</code><br></p>
 <p>Mpileup can generate very large files, one relevant strategy to summarize this information is to convert to a syn file from the Popoolation2 suite. When converted to a synchronized format, the format is optimized for handling large-scale pooled data, allowing for accurate comparisons between pools, controlling for coverage biases, and improving the accuracy of allele frequency estimates in diverse populations.<br></p>
 <p>Note that it is very easy to extract depth of coverage from a mpileup, e.g.:<br>
 <code>awk ‘{print $1”\t”$2”\t”$4”\t”$7”\t”$10}’ Oak_3pools.mpileup.first100kb &gt; Oak_3pools.mpileup.first100kb.cov</code><br></p>
 <p>Anyway, a mpileup can then be summarized in a synchronized mpileup with popoolation2, please use the command below: <br>
 <code>mpileup2sync.pl --fastq-type sanger --input Oak_3pools.mpileup.first100kb --output Oak_3pools.mpileup.first100kb.sync</code><br></p>
 <p>Here is an example of the beginning of a synchronized mpileup file: <br>
-Qrob_Chr01 1 T 0:0:0:0:0:0 0:1:0:0:0:0 0:0:0:0:0:0 <br>
-Qrob_Chr01 2 C 0:0:0:0:0:0 0:0:1:0:0:0 0:0:0:0:0:0 <br>
-Qrob_Chr01 3 T 0:0:0:0:0:0 0:1:0:0:0:0 0:0:0:0:0:0 <br>
-Qrob_Chr01 4 G 0:0:0:0:0:0 0:0:0:2:0:0 0:0:0:0:0:0 <br>
-Qrob_Chr01 5 A 0:0:0:0:0:0 2:0:0:0:0:0 0:0:0:0:0:0 <br>
-Qrob_Chr01 6 A 0:0:0:0:0:0 2:0:0:1:0:0 1:0:0:0:0:0 <br>
-Qrob_Chr01 7 G 0:0:0:0:0:0 1:0:0:2:0:0 0:0:0:3:0:0 <br>
-Qrob_Chr01 8 T 0:0:0:0:0:0 0:4:0:0:0:0 0:3:0:0:0:0 <br>
-Qrob_Chr01 9 A 0:0:0:0:0:0 3:0:0:0:0:0 3:0:0:0:0:0 <br>
-Qrob_Chr01 10 T 0:0:0:0:0:0 0:4:0:0:0:0 0:3:0:0:0:0 <br>
+<code>Qrob_Chr01	1	T	0:0:0:0:0:0	0:1:0:0:0:0	0:0:0:0:0:0</code><br>
+<code>Qrob_Chr01	2	C	0:0:0:0:0:0	0:0:1:0:0:0	0:0:0:0:0:0</code><br>
+<code>Qrob_Chr01	3	T	0:0:0:0:0:0	0:1:0:0:0:0	0:0:0:0:0:0</code><br>
+<code>Qrob_Chr01	4	G	0:0:0:0:0:0	0:0:0:2:0:0	0:0:0:0:0:0</code><br>
+<code>Qrob_Chr01	5	A	0:0:0:0:0:0	2:0:0:0:0:0	0:0:0:0:0:0</code><br>
+<code>Qrob_Chr01	6	A	0:0:0:0:0:0	2:0:0:1:0:0	1:0:0:0:0:0</code><br>
+<code>Qrob_Chr01	7	G	0:0:0:0:0:0	1:0:0:2:0:0	0:0:0:3:0:0</code><br>
+<code>Qrob_Chr01	8	T	0:0:0:0:0:0	0:4:0:0:0:0	0:3:0:0:0:0</code><br>
+<code>Qrob_Chr01	9	A	0:0:0:0:0:0	3:0:0:0:0:0	3:0:0:0:0:0</code><br>
+<code>Qrob_Chr01	10	T	0:0:0:0:0:0	0:4:0:0:0:0	0:3:0:0:0:0</code><br>
 <i>Note: For each pool, the format is A-count:T-count:C-count:G-count:N-count:*-count, which represents the number of reads supporting the alleles A, T, C, G, ambigious allele (N) and indels (*).</i><br></p>
 <p>Can you identify potential mutations in this output? How accurate are the mutations listed above? Explore the file further to uncover additional mutations. <br></p>
 <p>Once the data is formatted, it can easily be imported into the R package poolfstat using the function popsync2pooldata. This makes it easier to call variants and perform downstream analyses adapted for pool-seq data using the functions of this R package (e.g. PCA, F[ST] calculations, etc.). For further details on these steps, please refer to Friday’s proposal.<br><br></p>
@@ -412,8 +412,8 @@ he VCF header begins with multiple lines starting with ##. These lines contain v
 <code>bcftools convert -O v -o urban_contryside_anole.vcf urban_contryside_anole.bcf</code><br></p>
 <p>It is convenient to explore the VCF<br>
 <code>grep -v “#” urban_contryside_anole.vcf | head -30000 | tail -2</code><br>
-chr4 120457343 . T G . PASS NS=23;DP=60;AF=2.62007e-06 DP:GL:PL:GP 2:0,-0.602068,-7.29999:0,6,73:0.800003,0.199997,4.00962e-08 0:0,0,0:0,0,0:0.333333,0.333333,0.333333 <i>(…continued)</i><br>
-chr4 120457344 . G T&amp;emsp PASS NS=26;DP=92;AF=0.0170235 DP:GL:PL:GP 4:0,-1.20414,-10.6139:0,12,106:0.941178,0.0588216,2.2899e-11 0:0,0,0:0,0,0:0.333333,0.333333,0.333333 <i>(…continued)</i><br></p>
+<code>chr4	120457343	.	T	G	.	PASS	NS=23;DP=60;AF=2.62007e-06	DP:GL:PL:GP	2:0,-0.602068,-7.29999:0,6,73:0.800003,0.199997,4.00962e-08	0:0,0,0:0,0,0:0.333333,0.333333,0.333333 <i>(…continued)</i><br></code><br>
+<code>chr4	120457344	.	G	T	PASS	NS=26;DP=92;AF=0.0170235	DP:GL:PL:GP	4:0,-1.20414,-10.6139:0,12,106:0.941178,0.0588216,2.2899e-11	0:0,0,0:0,0,0:0.333333,0.333333,0.333333 <i>(…continued)</i><br></code><br></p>
 <p>Interpret the results for the two positions displayed in the VCF above (or any other selected positions from the VCF). What are the most likely genotype calls at these positions? Do the results appear logical and consistent with your expectations? <br></p>
 <p>By using ANGSD, it is possible to estimate allele frequencies, compute diversity statistics, and even detect signals of selection while accommodating the limitations of low-depth sequencing. These capabilities make it an essential tool for population genomic studies where resources or biological constraints restrict sequencing coverage (see Thursday’s practical session). <br></p>
 </div>
