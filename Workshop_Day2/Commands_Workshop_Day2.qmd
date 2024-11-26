@@ -1,7 +1,25 @@
 ---
 title: "Physalia course, Day 2: Workshop on Population Structure and Admixture"
 author: "Yann Bourgeois"
-format: html
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    include-in-header: 
+       text: |
+         \usepackage{fvextra}
+         \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+include-before-body:
+  text: |
+    \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+      showspaces = false,
+      showtabs = false,
+      breaksymbolleft={},
+      breaklines
+      % Note: setting commandchars=\\\{\} here will cause an error 
+    }
+
 editor: visual
 bibliography: references.bib
 ---
@@ -51,7 +69,7 @@ conda activate Workshop_TL_YB ###to activate the environment named Workshop_TL_Y
 conda deactivate ###to exit the environment. We can load another one after that if needed.
 ```
 
-At last, we will start by creating in our own workspace a folder named "Dataset" in which we will create symbolic links to the actual data files found in the "Shared/" folder. If you are not familiar with symlinks, it simply means that we create redirections to the actual files without copying them. This will avoid copying the files multiple times.
+We will start by creating in our own workspace a folder named "Dataset" in which we will create symbolic links to the actual data files found in the "Shared/" folder. If you are not familiar with symlinks, it simply means that we create redirections to the actual files without copying them. This will avoid copying the files multiple times.
 
 ```{bash}
 #| eval: false
@@ -61,6 +79,15 @@ cd Dataset
 ln -s /home/ubuntu/Share/Day2_popstructure/* .
 
 ls -s ### See how all is blue and light?
+```
+
+At last, if you need or want to download data on your own machine, the basic scp command should look like this (replace by actual paths to the directories of interest):
+
+```{bash}
+#| eval: false
+
+##Assuming your key is called popgen.pem
+scp -i popgen.pem ubuntu@34.221.126.95:/path/on/the/server/ /path/on/your/computer/
 ```
 
 Hopefully these few explanations should help you get through the workshop and make everything work. Use Slack and Zoom if needed!
@@ -77,14 +104,14 @@ The command is as follows (shell script). We will look only at *P. dactylifera* 
 
 ```{bash}
 #| eval: false
-OUTPUT_PATH=/home/ubuntu/Workshops_TL_YB_PopGenResults/ ###Edit this to point toward where you would like the results to be stored. You can of course directly replace by "Results/" directly in the code. This is mostly to give you an idea of what can be done with variable declation.
+OUTPUT_PATH=/home/ubuntu/Results/ ###Edit this to point toward where you would like the results to be stored. You can of course directly replace by "Results/" directly in the code. This is mostly to give you an idea of what can be done with variable declation.
 
 export PATH="$PATH:/home/ubuntu/Share/software/VCF2Dis-1.53/bin"
 export PATH="$PATH:/home/ubuntu/Share/software/PopLDdecay-3.43/bin"
 export PATH="$PATH:/home/ubuntu/Share/software/Dsuite/Build"
 export PATH="$PATH:/home/ubuntu/Share/software/Dsuite/utils/"
 
-mkdir ${OUTPUT_PATH} ###To create the folder.
+mkdir ${OUTPUT_PATH} ###To create the folder. You can of course simply type mkdir Results/ from where you are.
 
 cd Dataset  ##To access the Data folder. You can of course execute the command from outside the folder if you specify the path towards the VCF and the file with the list of populations.
 PopLDdecay -InVCF subset_Flowers_2019.vcf.gz -SubPop list_dacty.txt -MAF 0.05 -OutStat ${OUTPUT_PATH}/LD-decay_all.stat
@@ -488,7 +515,6 @@ Using the Evanno method, we can determine the most likely number of migration ed
 
 library(OptM)  ###to install on your own machine
 result_opt=optM(folder = "./Results/Bootstrap_TreeMix/")
-plot_optM(result_opt)
 plot_optM(result_opt)
 
 ```
