@@ -133,14 +133,16 @@ cd ~/Day3_demography/data-datepalm/Res_SMCpp
 smc++ plot -g 10 -c physalia_smcpp_plot_missingcutoff500.pdf PdactyliferaMe/model.final.json PdactyliferaNAfr/model.final.json Ptheophrasti/model.final.json
 
 The command smc++ plot generates a demographic history plot from SMC++ results, providing a visual representation of effective population size (N~e~​) over time. We can refine a bit the output using R.
-The results are available on the following directory:
-cd ./Day3_demography/data-datepalm/Res_SMCpp/
+The results are available on the following directory (i.e. the same than before) with two outputs files: "physalia_smcpp_plot_missingcutoff500.csv" and "physalia_smcpp_plot_missingcutoff500.pdf":
+cd ~/Day3_demography/data-datepalm/Res_SMCpp/
 
-Then you can inspect and start the R script:
+Then you can inspect the R script and then launch it:<br>
 less ~/Day3_demography/data-datepalm/Res_SMCpp/script_generate_smcpp.R
 Rscript script_generate_smcpp.R
 
-This R script is expected to generate a PDF file titled "Rplot_ggplot2_smcpp_missingcutoff500.pdf", illustrating the variation in inferred effective population size (N~e~​) over time.
+Some warnings shown on the screen are expected (+ null device, 1)! Note that the R script is available here, if you prefer to use Rstudio. In this case you will need to download the physalia_smcpp_plot_missingcutoff500.csv file.
+
+This R script is expected to generate a PDF file titled "Rplot_ggplot2_smcpp_missingcutoff500.pdf" (if you use Rstudio and wants to just show the plot on Rstudio, just use a "#" before the pdf() and the dev.off() functions), illustrating the variation in inferred effective population size (N~e~​) over time.
 
 OPTIONAL (LEVEL 1): Modify the R script to perform the same analysis using an inference which assumed a different --missing-cutoff option (namely 50000). The models to use for the smc++ plot function are available on the following directory: ~/Day3_demography/data-datepalm/Res_SMCpp/res_SMCpp_missing50kb/. Compare the two results. Are there significant differences? If so, identify the population(s) where these differences occur.
 OPTIONAL (LEVEL 2): Create a single plot combining the results from both inferences to better visualize the differences.
