@@ -178,8 +178,7 @@ head -1 Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader_FOR_IMPATIENT_PERSON
 Since you know to what corresponds the value now, let's remove this sentence of this file:
 grep -v "independent" Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader > Output_Ne_Ouessant.txt
 OR (in case, you were too impatient!)
-grep -v "independent" 
-Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader_FOR_IMPATIENT_PERSON_ONLY.txt > Output_Ne_Ouessant.txt
+grep -v "independent" Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader_FOR_IMPATIENT_PERSON_ONLY.txt > Output_Ne_Ouessant.txt
 
 Use the Rscript script_GONE_ggplot2.R to generate the R plot based on the GONE-inferred N~e~
 Rscript script_GONE_ggplot2.R
