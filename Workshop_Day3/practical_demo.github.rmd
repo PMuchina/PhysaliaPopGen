@@ -182,7 +182,7 @@ grep -v "independent" Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader_FOR_IM
 
 Use the Rscript script_GONE_ggplot2.R to generate the R plot based on the GONE-inferred N~e~
 Rscript script_GONE_ggplot2.R
-The script is expected to output a pdf containing the results.
+Similarly to before, some warnings are expected to be shown on the screen, no worries. At the end, this R script is expected to output a pdf containing the results.
 How has evolved the effective population sizes over the last 100 generations?
 Note: GONE provides results for the last ~600 generations, but this can correspond to very small genomic regions influenced by recombination over these generations—especially in species like honey bees, which exhibit unique characteristics (as you have perhaps noted earlier ;)). Therefore, I strongly recommend avoiding plots that extend beyond the last 200 generations for most species and potentially even fewer for others (e.g. honey bees). Most importantly, refrain from overinterpreting changes in the more distant past, as these estimates become increasingly uncertain with the number of generations (i.e. which can be considered as the opposite of coalescent-based approaches).
 OPTIONAL: Generate a plot that combines the results from two separate inferences. Do the results appear consistent ?
@@ -196,7 +196,7 @@ The last two parts of this practical, I will introduce the use of the DILS softw
 
 One key advantage of DILS is its accessibility and speed, especially compared to many other demographic methods. Additionally, DILS incorporates the effects of linked selection—such as background selection and selective sweeps—into its analyses. This allows for more robust estimates of population size changes, migration rates, and other key demographic parameters compared to most currently available software. This feature is particularly valuable for species with high levels of genetic linkage or strong selection pressures, where neglecting these factors could result in misleading inferences.
 
-Today, we will use the online version available at: http://dils.univ-lyon1.fr/. 
+Today, we will use the online version available at: http://dils.univ-lyon1.fr/ 
 
 First, download the directory containing the materials for from the cluster to your own computer. To do that, open a new terminal on your own computer (i.e. please do not use a terminal already connected on the physalia cluster!) and then use the scp function to download from the cluster to your computer, here we use "scp -r" to transfer all the data in a given directory! Of course, edit "cXX" and "userXX".  
 scp -i cXX.pem -r userXX@WednesdayIPaddress:"/home/userXX/Day3_demography/data-honeybees/ABC-based_DILS" .
