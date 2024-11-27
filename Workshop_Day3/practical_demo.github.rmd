@@ -129,7 +129,7 @@ A major challenge in the community lies in the limited knowledge of mutation rat
 Until now, due to the computational constraints, it was impossible for your launch the commands, but now you will be able to use a smc++ function to generate the final output files! To do so, use the following command:
 conda deactivate
 conda activate Workshop_TL_YB_Demography
-cd /home/user2/Day3_demography/data-datepalm/Res_SMCpp
+cd ~/Day3_demography/data-datepalm/Res_SMCpp
 smc++ plot -g 10 -c physalia_smcpp_plot_missingcutoff500.pdf PdactyliferaMe/model.final.json
 PdactyliferaNAfr/model.final.json Ptheophrasti/model.final.json
 
