@@ -27,7 +27,7 @@ Remember, you can explore a compressed VCF file without having to uncompress it,
 zmore Flowers_et_al_2019.SNPs.tronq.vcf.gz
 Press "q" on your keyboard to exit reading mode and return to the console. 
 
-"To learn more about the fields in the VCF file, particularly the names of the individuals (from column 10 onward), note that this information is provided in the last line of the header. This line begins with # and starts with the chromosome ID. You can simply use grep "#CHROM" to quickly extract this crucial information! 
+To learn more about the fields in the VCF file, particularly the names of the individuals (from column 10 onward), note that this information is provided in the last line of the header. This line begins with # and starts with the chromosome ID. You can simply use grep "#CHROM" to quickly extract this crucial information! 
 zmore Flowers_et_al_2019.SNPs.tronq.vcf.gz | grep "#CHROM"
 Given there is always 9 other fields in a VCF, we can count the number of individuals by running:
 zmore Flowers_et_al_2019.SNPs.tronq.vcf.gz | grep "#CHROM" | awk '{print NF-9}'
