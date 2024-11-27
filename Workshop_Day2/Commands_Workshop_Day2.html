@@ -541,7 +541,7 @@ div.csl-indent {
 <p>Using the Evanno method, we can determine the most likely number of migration edges to add to our graph with the library OptM in R. To put it simply, we try to identify the number of migration edges above which we do not add much explanatory power. This threshold is identified by looking at the ‘acceleration’ of likelihoods (the second-order rate of change, or the change in the slope) over increasing values of K.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(OptM)  <span class="do">###to install on your own machine</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>result_opt<span class="ot">=</span><span class="fu">optM</span>(<span class="at">folder =</span> <span class="st">"./Results/Bootstrap_TreeMix/"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>result_opt<span class="ot">=</span><span class="fu">optM</span>(<span class="at">folder =</span> <span class="st">"./Results/Bootstraps_TreeMix/"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_optM</span>(result_opt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that you can also run this diagnostic on a shiny app online: https://rfitak.shinyapps.io/OptM/</p>

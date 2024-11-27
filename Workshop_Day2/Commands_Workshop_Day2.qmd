@@ -1,25 +1,7 @@
 ---
 title: "Physalia course, Day 2: Workshop on Population Structure and Admixture"
 author: "Yann Bourgeois"
-format:
-  pdf:
-    toc: true
-    number-sections: true
-    colorlinks: true
-    include-in-header: 
-       text: |
-         \usepackage{fvextra}
-         \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
-include-before-body:
-  text: |
-    \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
-      showspaces = false,
-      showtabs = false,
-      breaksymbolleft={},
-      breaklines
-      % Note: setting commandchars=\\\{\} here will cause an error 
-    }
-
+format: html
 editor: visual
 bibliography: references.bib
 ---
@@ -514,7 +496,7 @@ Using the Evanno method, we can determine the most likely number of migration ed
 #| eval: false
 
 library(OptM)  ###to install on your own machine
-result_opt=optM(folder = "./Results/Bootstrap_TreeMix/")
+result_opt=optM(folder = "./Results/Bootstraps_TreeMix/")
 plot_optM(result_opt)
 
 ```
