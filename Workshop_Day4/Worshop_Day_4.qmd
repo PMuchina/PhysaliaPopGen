@@ -1,32 +1,14 @@
 ---
 title: "Physalia Course, Day 4: Workshop on Genome-Wide Scans of Selection and Association"
 author: "Yann Bourgeois"
-format:
-  pdf:
-    toc: true
-    number-sections: true
-    colorlinks: true
-    include-in-header: 
-       text: |
-         \usepackage{fvextra}
-         \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
-include-before-body:
-  text: |
-    \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
-      showspaces = false,
-      showtabs = false,
-      breaksymbolleft={},
-      breaklines
-      % Note: setting commandchars=\\\{\} here will cause an error 
-    }
-
+format: html
 editor: visual
 bibliography: references.bib
 ---
 
 # Genome-wide scan for selection: urban and non-urban lizards
 
-This first exercise deals with a recent analysis YB carried on green anole lizards from New Orleans, Louisiana, USA. You can find more information about this urban population in this paper [@weber2021].
+This first exercise deals with a recent analysis YB carried on green anole lizards from New Orleans, Louisiana, USA. You can find more information about this urban population in the Weber paper in the References folder on Github.
 
 There are three different populations in this dataset. A few samples (N=5), listed in the file named "GA.list", come from the same genetic cluster as the others, but are not from Louisiana. They are used as an outgroup. The two other files (countryside.list and subset_urban.list) list urban anoles samples within a park in New Orleans, as well as individuals sampled in the countryside near New Orleans.
 
@@ -106,6 +88,7 @@ conda deactivate
 Now, we want to visualize our results. We will use R for this. The R scripts are show below:
 
 ```{r}
+#| eval: false
 
 library(reticulate) #This is if you want to use Quarto on your own machine and call the version of Python that has dadi installed.
 use_python("/home/yannbourgeois/mambaforge/bin/python")
@@ -198,7 +181,7 @@ cd ..
 Admittedly, it looks barbaric. It is called ANGSD for a reason. You can take comfort in knowing that most of the filters are fine for most applications. Nevertheless, let's review the different options:
 
 | Option             | Meaning                                                                                                                                                                                                                |
-|------------------|------------------------------------------------------|
+|--------------------|----------------------------------------------------|
 | -uniqueOnly        | removes reads with multiple hits.                                                                                                                                                                                      |
 | -remove_bads       | removes reads with a flag above 255 (not primary, failure and duplicate reads).                                                                                                                                        |
 | -only_proper_pairs | Only paired reads mapping in the expected direction (forward R1, reverse R2) and not too distant are kept.                                                                                                             |
@@ -292,6 +275,7 @@ conda activate Workshop_TL_YB_admixture
 We are going to use some functions in the popular module dadi [@gutenkunst2009]. It includes functions to visualize and manipulate spectra which may come handy for you too. To run the correct version of python, type python3.7 in the Workshop_TL_YB_admixture environment.
 
 ```{python}
+#| eval: false
 
 import dadi
 import glob
@@ -356,6 +340,8 @@ points(region3$WinCenter, region3$Tajima, xlim=c(122495000-1e6,122655000+1e6), t
 If you prefer ggplot2, here is an option. Make sure to deactivate your conda environments before if you are running this on the cluster (the libraries are not installed there).
 
 ```{r}
+#| eval: false
+
 library(ggplot2)
 library(gridExtra)
 
@@ -412,12 +398,12 @@ At last, it may well be that you wish to visualize genes next to our summary sta
 
 ## More advanced: using simulations to decide on thresholds.
 
-First, the script below to obtain the scaled parameters for the ms simulator. We are going to use a "simple" demographic model of isolation-with-migration for our two urban and non-urban population. We will use this model to generate simulations, estimate summary statistics, and decide
+Firstly, we will use the R script below to obtain the scaled parameters for the ms simulator [@hudson2002]. We are going to use a "simple" demographic model of isolation-with-migration for our two urban and non-urban population. The original dataset included 32 urban and 12 non-urban individuals, so we will simulate this sample size. We will use this model to generate simulations, estimate summary statistics, and decide what could be a *F~ST~* value that is either inconsistent with neutrality, or consistent with very strong, recent selection.
 
 Let's be honest, the coalescent simulator ms [@hudson2002] is not the most intuitive, but it is extremely fast, versatile, and is now part of the standard toolbox for population geneticists. You will find the manual in the Documentation folder for this workshop, but here are some pointers already.
 
 | ms Option              | Meaning                                                                                                                                                                                                                                                                                                                                                                                                                       |
-|------------------|------------------------------------------------------|
+|--------------------|----------------------------------------------------|
 | -t                     | Set value of 4 x N~0~ x u. N~0~ is the reference population. If you have several populations, you need to pick one and **scale** **everything** with it.                                                                                                                                                                                                                                                                      |
 | -I npop size0 size1... | Followed by the number of populations, and the (haploid) sample size for each.                                                                                                                                                                                                                                                                                                                                                |
 | -m i j M~ij~           | Sets the effective migration rate 4 x N~0~ x m~ij~ . This is not intuitive at first: m~ij~ reflects the fraction of population i that is made of j migrants each generation. Therefore it reflects migration from j towards i.                                                                                                                                                                                                |
@@ -458,6 +444,27 @@ ms_background <- paste("88", # total number of sampled chromosomes
             "-en",50784/(4*0.1*No),2,(61542/2)/No,
             "-en",106177/(4*0.1*No),2,(207976/2)/No)
 ms_background
+```
+
+This is not easy. Fortunately, there is a convenient R package to visualize our demographic scenario and check that it does what we want, POPdemog.
+
+```{r}
+#| eval: false
+
+##install.packages("https://github.com/YingZhou001/POPdemog/raw/master/POPdemog_1.0.3.tar.gz", repos=NULL)
+library(POPdemog)
+##Type
+?PlotMS()
+###to get a list of options
+par(mfrow=c(2,2))
+PlotMS(input.cmd = "ms 88 1 -t 0.02635 -I 2 64 24 -m 1 2 0.0527 -m 2 1 17.482977 -en 0 2 126.858064516129 -ej 0.103225806451613 1 2 -en 0.103225806451613 2 4102.03870967742 -en 163.81935483871 2 397.045161290323 -en 342.506451612903 2 1341.78064516129",type="ms",time.scale="log10year",N4=310,gen=1)
+
+PlotMS(input.cmd = "ms 88 1 -t 0.02635 -I 2 64 24 -m 1 2 0.0527 -m 2 1 17.482977 -en 0 2 126.858064516129 -ej 0.103225806451613 1 2 -en 0.103225806451613 2 4102.03870967742 -en 163.81935483871 2 397.045161290323 -en 342.506451612903 2 1341.78064516129",type="ms",time.scale="4Ne",N4=310,gen=1)
+
+###With background selection
+PlotMS(input.cmd = "ms 88 1 -t 0.002635 -I 2 64 24 -m 1 2 0.00527 -m 2 1 1.7482977 -en 0 2 126.858064516129 -ej 1.03225806451613 1 2 -en 1.03225806451613 2 4102.03870967742 -en 1638.1935483871 2 397.045161290323 -en 3425.06451612903 2 1341.78064516129",type="ms",time.scale="log10year",N4=31,gen=1)
+
+PlotMS(input.cmd = "ms 88 1 -t 0.002635 -I 2 64 24 -m 1 2 0.00527 -m 2 1 1.7482977 -en 0 2 126.858064516129 -ej 1.03225806451613 1 2 -en 1.03225806451613 2 4102.03870967742 -en 1638.1935483871 2 397.045161290323 -en 3425.06451612903 2 1341.78064516129",type="ms",time.scale="4Ne",N4=31,gen=1)
 
 ```
 
@@ -507,6 +514,7 @@ conda deactivate
 Now, let's have a look at the obtained theoretical *F~ST~* distributions using R.
 
 ```{r}
+#| eval: false
 
 table=read.table("Simulations_folder/Fst_Bhatia_distribution_neutral_50kb.txt",h=F)
 sel=read.table("Simulations_folder/Fst_Bhatia_distribution_selection.txt")
@@ -572,6 +580,8 @@ conda deactivate
 Now in R, we can use the rehh package:
 
 ```{r, results='hide', warning=FALSE}
+#| eval: false
+
 #| warning: false
 
 # install.packages("rehh")
@@ -677,6 +687,7 @@ plink --noweb --file association_all --assoc --pheno-name SSSS_vs_others --pheno
 We can now import the association results into R. Let's make a simple Manhattan plot with our two scaffolds.
 
 ```{r}
+#| eval: false
 
 library(qqman)
 library(data.table)
@@ -708,6 +719,7 @@ par(mfrow=c(1,1))
 Now, let's examine the Q-Q plot of our p-values. What do we notice?
 
 ```{r}
+#| eval: false
 
 library(qqman)
 library(data.table)
