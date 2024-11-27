@@ -130,8 +130,7 @@ Until now, due to the computational constraints, it was impossible for your laun
 conda deactivate
 conda activate Workshop_TL_YB_Demography
 cd ~/Day3_demography/data-datepalm/Res_SMCpp
-smc++ plot -g 10 -c physalia_smcpp_plot_missingcutoff500.pdf PdactyliferaMe/model.final.json
-PdactyliferaNAfr/model.final.json Ptheophrasti/model.final.json
+smc++ plot -g 10 -c physalia_smcpp_plot_missingcutoff500.pdf PdactyliferaMe/model.final.json PdactyliferaNAfr/model.final.json Ptheophrasti/model.final.json
 
 The command smc++ plot generates a demographic history plot from SMC++ results, providing a visual representation of effective population size (N~e~​) over time. We can refine a bit the output using R.
 The results are available on the following directory:
