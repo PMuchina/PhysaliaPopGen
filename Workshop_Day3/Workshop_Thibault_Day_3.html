@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Thibault Leroy">
+
+<title>Physalia course, Day 3: Demography</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Workshop_Thibault_Day_3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Workshop_Thibault_Day_3_files/libs/quarto-html/quarto.js"></script>
+<script src="Workshop_Thibault_Day_3_files/libs/quarto-html/popper.min.js"></script>
+<script src="Workshop_Thibault_Day_3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Workshop_Thibault_Day_3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Workshop_Thibault_Day_3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Workshop_Thibault_Day_3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Workshop_Thibault_Day_3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Workshop_Thibault_Day_3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Workshop_Thibault_Day_3_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Physalia course, Day 3: Demography</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Thibault Leroy </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Thibault Leroy (thibault.leroy@inrae.fr)</p>
+<section id="general-context-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="general-context-dataset">General context &amp; dataset</h3>
+<p>Demographic modelling is a powerful approach to reconstruct the evolutionary history of populations, such as changes in population size, migration patterns, and divergence times. Leveraging large-scale genomic datasets enhances the accuracy and resolution of such analyses, providing insights into complex population dynamics. However, it is important to remember that these analyses rely on simplified representations of reality. Consequently, results from demographic modelling should be interpreted with caution. As George Box famously noted, “All models are wrong, but some are useful. However, the approximate nature of the model must always be borne in mind. Applied to demographic modelling with population genomics data, this means that no model can fully capture the exact real demographic history. The goal is to approximate reality as closely as possible, providing a useful framework for understanding evolutionary processes, therefore providing a window into the past.</p>
+<p>The practical implementation of demographic modelling is also highly challenging due to the computational demands of handling extensive datasets. Many tools require simulation-based approaches, which can take days or weeks to complete for realistic parameter ranges. Moreover, demographic modelling is time-intensive for researchers, demanding careful parameter selection, algorithmic understanding, and result interpretation.</p>
+<p>In this practical, due to all these constraints, the objective will be to provide an overview of the key steps in demographic modelling using large genomic data. To address the constraints of time and computation, we will mostly evaluate the results of some inferences.</p>
+<p>Regarding the data, we will first use a subset of the same dataset than in yesterday’s practical (Flowers et al.&nbsp;2019 PNAS), which details genomic data from date palms, ensuring continuity in our analysis. It is indeed very important to understand a solid understanding of the population structure within the dataset is crucial before. Exploring population structure through principal component analysis (PCA), Bayesian clustering methods (e.g., STRUCTURE, ADMIXTURE), and other population genetics approaches are essential to identify distinct genetic units among all the samples. Demographic models indeed make assumptions (e.g.&nbsp;panmixia within populations), which therefore require accurate definitions of genetic populations to perform meaningful demographic inferences. Therefore, performing these initial population structure analyses is critical before beginning demographic modelling.</p>
+<p>Before to start, copy the content of the repository:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ~/Share/Day3_demography/ ~</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Day3_demography/data-datepalm/Calling/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Remember, you can explore a compressed VCF file without having to uncompress it, use the following command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zmore</span> Flowers_et_al_2019.SNPs.tronq.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Press “q” on your keyboard to exit reading mode and return to the console.</p>
+<p>To learn more about the fields in the VCF file, particularly the names of the individuals (from column 10 onward), note that this information is provided in the last line of the header. This line begins with # and starts with the chromosome ID. You can simply use grep “#CHROM” to quickly extract this crucial information!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zmore</span> Flowers_et_al_2019.SNPs.tronq.vcf.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"#CHROM"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Given there is always 9 other fields in a VCF, we can count the number of individuals by running:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zmore</span> Flowers_et_al_2019.SNPs.tronq.vcf.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"#CHROM"</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{print NF-9}'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Determine how many high-quality SNPs are present in this dataset. To do that you can use different strategies, either using grep and looking for lines with “PASS”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zmore</span> Flowers_et_al_2019.SNPs.tronq.vcf.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"#"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"PASS"</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>But the best strategy remains to use awk for that purpose, explicitly looking at the “PASS” tag in the FILTER field (7th column of the VCF)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zmore</span> Flowers_et_al_2019.SNPs.tronq.vcf.gz <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'$7 == "PASS" {print $0}'</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>So based on this, how many SNPs do you observe in this file?</p>
+<p>OPTIONAL: Can you estimate a variant density on the first scaffold observed on the VCF (# high quality variants on this scaffold / length of the first scaffold based on the vcf file)? To print the last line of the file, you will probably need to use somewhere “tail -1”. All the other functions needed (zmore, grep, etc) are expected to be described above. Do you see some limits regarding the accuracy of this SNP density estimate?<br>
+If you have had a complete vcf, you could have counted the number of PASS sites across the complete VCF and then used assemblathon2 (Monday’s practical) to exactly know the size of the reference genome size.</p>
+</section>
+<section id="step-1-identify-non-admixed-individuals" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-identify-non-admixed-individuals">Step 1: identify non-admixed individuals</h3>
+<p>When performing demographic modeling, it is crucial to filter out individuals with evidence of recent admixture. Recent patterns of gene flow can mask more ancient demographic signals, making it difficult to accurately infer historical population dynamics. By removing most admixed individuals (e.g.&nbsp;Q-values &gt; 0.9), we ensure that the analysis focuses on distinct genetic units, reflecting the deeper evolutionary history rather than being confounded by recent events.</p>
+<p>First, we will identify the individuals with the most unambiguous genetic assignments using the file samples_Qvalues.txt. This file provides Q-values for each individual, representing their proportional membership in different genetic clusters. To ensure robust analyses, we will retain only individuals with Q-values greater than 0.9, indicating clear assignment to a single cluster.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Day3_demography/data-datepalm/</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"P._dactylifera_ME"</span> samples_Qvalues.txt <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'$4 &gt; 0.90 {print $0}'</span> <span class="op">&gt;</span>  samples_Qvalues.PdactyliferaME.txt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"P._dactylifera_NAfr"</span> samples_Qvalues.txt <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'$4 &gt; 0.90 {print $0}'</span> <span class="op">&gt;</span>  samples_Qvalues.PdactyliferaNAfr.txt</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"P._theophrasti"</span> samples_Qvalues.txt <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'$5 &gt; 0.90 {print $0}'</span> <span class="op">&gt;</span>  samples_Qvalues.Ptheophrasti.txt</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">###Print only the name of the individuals </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'{print $1}'</span> samples_Qvalues.PdactyliferaME.txt <span class="op">&gt;</span> samples_Qvalues.PdactyliferaME.list</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'{print $1}'</span> samples_Qvalues.PdactyliferaNAfr.txt <span class="op">&gt;</span> samples_Qvalues.PdactyliferaNAfr.list</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'{print $1}'</span> samples_Qvalues.Ptheophrasti.txt <span class="op">&gt;</span> samples_Qvalues.Ptheophrasti.list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>How many individuals are identified as “relatively pure” in each population or species based on this criterion? Note: if you don’t know how to know this, please continue. The answer is not needed for the rest and will be provided during the recap.</p>
+</section>
+<section id="step-2-perform-inferences-of-ne-with-smc" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-perform-inferences-of-ne-with-smc">Step 2: Perform inferences of N<sub>e</sub> with SMC++</h3>
+<p>Many softwares are available to perform demographic inferences of N<sub>e</sub>, including PSMC, MSMC, poolsizeABC. Here we will use the Sequentially Markovian Coalescent (SMC++), a powerful tool for reconstructing historical population sizes using whole-genome data from multiple individuals. Unlike PSMC, SMC++ can incorporate multiple genomes, increasing resolution and robustness in demographic inference. Even if MSMC can combines multiple diploid genomes to jointly infer demographic history, smc++ was specifically designed to handle large number of genomes efficiently (less computationally intensive and more efficient as the genomes increases). Preparing input file can be a bit time-consuming (vcf2smc command), but the script below can help you.</p>
+<p>First, we will extract only biallelic SNPs from the vcf.gz file, as PSMC relies on information from heterozygous sites (as discussed in the lecture). Note that the input files are directly used in their compressed format here too! ;)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate Workshop_TL_YB_Calling</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vcftools</span> <span class="at">--gzvcf</span> ./Calling/Flowers_et_al_2019.SNPs.tronq.vcf.gz <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">--remove-indels</span> <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">--max-alleles</span> 2 <span class="dt">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">--min-alleles</span> 2 <span class="dt">\</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">--recode</span> <span class="dt">\</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">--out</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.tronq.vcf <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.tronq.vcf.recode.vcf ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.tronq.vcf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>How many biallelic SNPs are present in the VCF file? OPTIONAL: if you have estimated the variant density on the first scaffold of the vcf (see first OPTIONAL section above), does this value change assuming biallelic SNP only? Why?</p>
+<p>For all the work below, I performed simulations with this subset, so first I extract the names of the 3 first scaffolds in the vcf (I focused on the first three to speed up the computations, but in general we work on all scaffolds (at least those &gt; 100kb)). Special note for Etsuko Nonaka, this method is not adapted for RADseq data, here we should have WGS data! So if you execute the command below you will see a difference when you will read the file, because it is a subset. Do you see a difference?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"#"</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.tronq.vcf <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{print $1}'</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-3</span> <span class="op">&gt;</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.vcf.3topscaffoldsID </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>IMPORTANT: The commands provided below have the objective to give you an idea of the expected scripts. 1/ Please again, review the code carefully to understand the rationale, but DO NOT EXECUTE it on the Physalia cluster today! Please only execute the code from the section corresponding to the “smc++ plot (…)”, see below (from line starting with “conda deactivate”…). 2/ please DO NOT OVERINTERPRET the results of the inferences that will be shown in this section, since these results will be only baed on genetic data from a few scaffolds, without masking regions of the genome (masking is recommended, see also below)</p>
+<p>Try to understand the command above, what is perform at each step (i.e.&nbsp;from each side of the pipe).</p>
+<p>Ok so now, the objective will be to create the input file for smc++ for each of the three scaffolds and for each of the three populations composed by the individuals with Q-values &gt; 0.9. Given that the inputfiles will be generated in different directories for each population, so we have to first create the directories with mkdir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ./Calling/PdactyliferaMe ./Calling/PdactyliferaNAfr ./Calling/Ptheophrasti</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"#"</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.tronq.vcf <span class="op">&gt;</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.vcf.header</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">line</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">grep</span> <span class="st">"</span><span class="va">$line</span><span class="st">"</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.tronq.vcf <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"#"</span><span class="op">&gt;</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf.1</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">cat</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.vcf.header ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf.1 <span class="op">&gt;</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>         <span class="fu">rm</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf.1</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>         <span class="fu">rm</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf.gz</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>         <span class="ex">bgzip</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>         <span class="ex">tabix</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf.gz</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>         <span class="ex">smc++</span> vcf2smc <span class="at">--missing-cutoff</span> 500 </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ex">-v</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf.gz ./Calling/PdactyliferaMe/Flowers_et_al_2019.SNPs.bialleliconly.smc.PdactyliferaMe.<span class="va">$line</span>.gz <span class="va">$line</span> PdactyliferaME:Abouman,Ajwa,Amir_haj,Azraq_azraq,Began,Braim,Chichi,Dajwani,Dedhi,Dibbas,Ebrahimi,Ewent_ayob,Fard4,Faslee,Gajar,Halawy,Hawawiri,Helwa,Hilali,Hiri,Kabkab,Karbali,Kashoowari,Khadrawy,Khastawi,Khenezi,Khisab,Kuproo,Lulu,Maktoumi,Manjouma,Mazafati,Nagal,Naquel_khuh,Nebeit_seif,Otaquin,Piavom,Rothan,Shagri,Silani,Sultana,Um_al_blaliz,Um_al_hamam,Zahidi,Rabee</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>         <span class="ex">smc++</span> vcf2smc <span class="at">--missing-cutoff</span> 500 <span class="at">-v</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf.gz ./Calling/PdactyliferaNAfr/ Flowers_et_al_2019.SNPs.bialleliconly.smc.PdactyliferaNAfr.<span class="va">$line</span>.gz <span class="va">$line</span> PdactyliferaNAfr:Hayany,Saidi,Samany,Hamria,Zagloul,Barmel,Atlantica_CAP1_POPMAL1,Kamla,Jihl</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>         <span class="ex">smc++</span> vcf2smc <span class="at">--missing-cutoff</span> 500 <span class="at">-v</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.<span class="va">$line</span>.vcf.gz ./Calling/Ptheophrasti/Flowers_et_al_2019.SNPs.bialleliconly.smc.Ptheophrasti.<span class="va">$line</span>.gz <span class="va">$line</span> Ptheophrasti:Theophrasti_02a,Theophrasti_05a,Theophrasti_A1,Theophrasti_A5,Theophrasti_B1,Theophrasti_B3,Theophrasti_B5,Theophrasti_C1,Theophrasti_C4,Theophrasti_D1,Theophrasti_D3,Theophrasti_D5,Theophrasti_E2,Theophrasti_F1,Theophrasti_F2,Theophrastis_THE83_91051</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> ./Calling/Flowers_et_al_2019.SNPs.bialleliconly.vcf.top3scaffoldsID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Again, on the code above, we used “–missing-cutoff” with a quite arbitrary value but probably very conservative value (500), but please rather use a masked version of your reference genome on your own analysis. This will mask regions prone to biases, such as regions of high repetitive content, and therefore focus on reliable regions of the genome, masking ensures more accurate inference of effective population size.</p>
+<p>Now it’s time to use smc++ estimate, a key step for demographic inference. This command estimates effective population size changes over time using coalescent patterns inferred from the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Calling/</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pop <span class="kw">in</span> PdactyliferaMe PdactyliferaNAfr Ptheophrasti<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>         <span class="va">inputdir</span><span class="op">=</span><span class="va">$pop</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>         <span class="va">outdir</span><span class="op">=</span><span class="st">"res_SMCpp_missing50kb"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">$outdir</span><span class="st">"</span>/<span class="st">"</span><span class="va">$pop</span><span class="st">"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>         <span class="ex">smc++</span> estimate <span class="at">-o</span> ./<span class="st">"</span><span class="va">$outdir</span><span class="st">"</span>/<span class="st">"</span><span class="va">$pop</span><span class="st">"</span> 2.5e-08 <span class="va">$inputdir</span>/<span class="pp">*</span>.gz</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>One critical aspect of inferring effective population size (N<sub>e</sub>) is translating coalescent units into real time using mutation rates and generation time. This conversion allows estimates to be expressed in terms of generations and years. While coalescent rates are generally well inferred with sufficient data—such as whole-genome sequences of moderate coverage for tens of individuals and low reference genome fragmentation (typically a chromosome-scale reference). Of course, this is not our case since we use only 3 scaffolds to speed up the computations. A major challenge in the community lies in the limited knowledge of mutation rates and generation times in natural populations. Many researchers still default to using the mutation rate of Arabidopsis for plants or that of humans for animals, despite evidence of substantial variability across species (e.g.&nbsp;Bergeron et al., 2023, Nature). This generalized approach can lead to inaccuracies, as mutation rates are highly context-specific. This knowledge gap emphasizes the importance of caution when interpreting Ne estimates, as uncertainties in mutation rates and generation times can significantly impact the results. Further research into species-specific mutation rates and life histories is essential for improving the accuracy of demographic inferences. As you can see, here I used a mutation rate of 2.5e-8 (see the value in the command above) and a generation time of 10 years (see below) as assumed by Gros-Balthazard et al.&nbsp;2017 (Current biology).</p>
+<p>Until now, due to the computational constraints, it was impossible for your launch the commands, but now you will be able to use a smc++ function to generate the final output files! To do so, use the following command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate Workshop_TL_YB_Demography</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Day3_demography/data-datepalm/Res_SMCpp</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">smc++</span> plot <span class="at">-g</span> 10 <span class="at">-c</span> physalia_smcpp_plot_missingcutoff500.pdf PdactyliferaMe/model.final.json PdactyliferaNAfr/model.final.json Ptheophrasti/model.final.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The command smc++ plot generates a demographic history plot from SMC++ results, providing a visual representation of effective population size (N<sub>e</sub>​) over time. We can refine a bit the output using R. The results are available on the following directory (i.e.&nbsp;the same than before) with two outputs files: “physalia_smcpp_plot_missingcutoff500.csv” and “physalia_smcpp_plot_missingcutoff500.pdf”:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Day3_demography/data-datepalm/Res_SMCpp/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then you can inspect the R script and then launch it:<br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> ~/Day3_demography/data-datepalm/Res_SMCpp/script_generate_smcpp.R</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> script_generate_smcpp.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Some warnings shown on the screen are expected (+ null device, 1)! Note that the R script is available here, if you prefer to use Rstudio. In this case you will need to download the physalia_smcpp_plot_missingcutoff500.csv file.</p>
+<p>This R script is expected to generate a PDF file titled “Rplot_ggplot2_smcpp_missingcutoff500.pdf” (if you use Rstudio and wants to just show the plot on Rstudio, just use a “#” before the pdf() and the dev.off() functions), illustrating the variation in inferred effective population size (N<sub>e</sub>​) over time.</p>
+<p>OPTIONAL (LEVEL 1): Modify the R script to perform the same analysis using an inference which assumed a different –missing-cutoff option (namely 50000). The models to use for the smc++ plot function are available on the following directory: ~/Day3_demography/data-datepalm/Res_SMCpp/res_SMCpp_missing50kb/. Compare the two results. Are there significant differences? If so, identify the population(s) where these differences occur. OPTIONAL (LEVEL 2): Create a single plot combining the results from both inferences to better visualize the differences.</p>
+<p>Again, remember that the inferences are based on a restricted dataset, do not interpret here the results biologically. More broadly, always interpret the result of demographic inferences critically, especially those thare are based on inferences of N<sub>e</sub> only, since these methods make a series of assumptions (e.g.&nbsp;panmixia). Here, we recommend first using data from the entire genome and applying a mask to exclude potentially problematic regions.</p>
+</section>
+<section id="step-3-perform-inferences-of-recent-ne" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-perform-inferences-of-recent-ne">Step 3: Perform inferences of recent N<sub>e</sub></h3>
+<p>As you have observed, one limitation of coalescent-based methods is their focus on inferring relatively ancient effective population sizes (N<sub>e</sub>), since recent effective population sizes are generally poorly accurate and sensitive to different biases (e.g.&nbsp;phasing errors for methods requiring phased data). In contrast, increasingly popular approaches, such as the one implemented in GONE (Santiago et al.&nbsp;2020 MBE), utilize patterns of linkage disequilibrium (LD) across the genome to infer N<sub>e</sub>​.</p>
+<p>This LD-based strategy offers a significant advantage by providing robust estimates of recent N<sub>e</sub>​​, often within just a few generations. This is particularly useful for detecting recent demographic events, such as population bottlenecks, expansions, or declines, that are crucial for understanding contemporary population dynamics.</p>
+<p>From now to the end of this practical, we will focus on a large dataset of whole-genome sequencing data in honey bees (more than 300 genomes) corresponding to 9 genetic clusters (for details see Leroy et al.&nbsp;2024 bioRxiv, 2024.09.04.611184v1).</p>
+<p>A typical question one might ask is whether species have been affected by recent environmental changes (e.g.&nbsp;since the Industrial Revolution). This type of question is nearly impossible to answer using coalescent-based approaches, at least for most organisms. However, methods based on patterns of linkage disequilibrium (LD) hold much more promise in addressing such issues. Let’s take a concrete example: the black honey bee, native to Western Europe, is expected to have been heavily impacted by the widespread use of bees from other regions (notably Central Europe) by beekeepers and has been confined to isolated refuges in order to limit their introgression. We can therefore ask how its recent effective population size has recently evolved.</p>
+<p>Here, we assume that the script_GONE.sh file has just been downloaded from https://github.com/esrud/GONE/tree/master/Linux/, and that it has been executed on a subset of approximately 500,000 SNPs using the command below. Note that while this simplified approach is used for the purpose of this demonstration, the process described in our preprint was a bit more complex than this.</p>
+<p>We could therefore use the following command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Day3_demography/data-honeybees/recentNe_GONE</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> script_GONE.sh seqapipop870_Ouessant_500kSNPs.withheader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note: I chose this specific population as a model due to its biological significance (the black honey bee) and because it allows for faster computations—around 10-20 minutes compared to the 5-10 hours required for some other honey bee populations. However, it will still take some time. You can either launch the command and take a 15-20 minute break (!) or directly explore the results provided below. In any case, I encourage you to review the parameter file “INPUT_PARAMETERS_FILE” before. Do you notice anything particularly unique about honey bees in the file? Also note that if you need to generate the ped and map files on your own data, Plink can be a relevant program to consider.</p>
+<p>In case, you have launched the command on the cluster, the results regarding the effective population sizes will be in the file: “Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader”, in case you were too impatient to have a look at the results, they are in the file “Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader_FOR_IMPATIENT_PERSON_ONLY.txt”!</p>
+<p>Ok if you want to know to what corresponds the values reported in the file, just execute this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-1</span> Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>OR (in case, you were too impatient!)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-1</span> Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader_FOR_IMPATIENT_PERSON_ONLY.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since you know to what corresponds the value now, let’s remove this sentence of this file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">"independent"</span> Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader <span class="op">&gt;</span> Output_Ne_Ouessant.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>OR (in case, you were too impatient!)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">"independent"</span> Output_Ne_seqapipop870_Ouessant_500kSNPs.withheader_FOR_IMPATIENT_PERSON_ONLY.txt <span class="op">&gt;</span> Output_Ne_Ouessant.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the Rscript script_GONE_ggplot2.R to generate the R plot based on the GONE-inferred N<sub>e</sub></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> script_GONE_ggplot2.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Similarly to before, some warnings are expected to be shown on the screen, no worries. At the end, this R script is expected to output a pdf containing the results. How has evolved the effective population sizes over the last 100 generations? Note: GONE provides results for the last ~600 generations, but this can correspond to very small genomic regions influenced by recombination over these generations—especially in species like honey bees, which exhibit unique characteristics (as you have perhaps noted earlier ;)). Therefore, I strongly recommend avoiding plots that extend beyond the last 200 generations for most species and potentially even fewer for others (e.g.&nbsp;honey bees). Most importantly, refrain from overinterpreting changes in the more distant past, as these estimates become increasingly uncertain with the number of generations (i.e.&nbsp;which can be considered as the opposite of coalescent-based approaches). OPTIONAL: Generate a plot that combines the results from two separate inferences. Do the results appear consistent ?</p>
+</section>
+<section id="step-4-perform-relatively-simple-abc-demographic-modelling-under-dils" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-perform-relatively-simple-abc-demographic-modelling-under-dils">Step 4: Perform relatively simple ABC demographic modelling under DILS</h3>
+<p>The last two parts of this practical, I will introduce the use of the DILS software (Demographic Inference with Linked Selection, Fraïsse et al.&nbsp;2021 Mol Ecol Res), a tool designed for ABC-based demographic modeling within a single population or between two populations.</p>
+<p>One key advantage of DILS is its accessibility and speed, especially compared to many other demographic methods. Additionally, DILS incorporates the effects of linked selection—such as background selection and selective sweeps—into its analyses. This allows for more robust estimates of population size changes, migration rates, and other key demographic parameters compared to most currently available software. This feature is particularly valuable for species with high levels of genetic linkage or strong selection pressures, where neglecting these factors could result in misleading inferences.</p>
+<p>Today, we will use the online version available at: http://dils.univ-lyon1.fr/</p>
+<p>First, download the directory containing the materials for from the cluster to your own computer. To do that, open a new terminal on your own computer (i.e.&nbsp;please do not use a terminal already connected on the physalia cluster!) and then use the scp function to download from the cluster to your computer, here we use “scp -r” to transfer all the data in a given directory! Of course, edit “cXX” and “userXX”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-i</span> cXX.pem <span class="at">-r</span> userXX@WednesdayIPaddress:<span class="st">"/home/userXX/Day3_demography/data-honeybees/ABC-based_DILS"</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then visit the website from your own computer (!), the user name is “dils” ( the password will be independently provided on Slack). Note that it is also possible to install a version of DILS on your computer or computing cluster. It is even highly recommended (here you won’t be able to run it). Special note for Etsuko Nonaka, this method could perhaps be tested on RADseq data, even it is clearly more adapted to longer loci, such as those generated from exon capture data/RNAseq or WGS data (sets of a few tens or hundreds genomic regions of 10- or 100-kb distributed throughout the genomes).</p>
+<p>There are two important sections available under the menu in DILS, the “ABC” section (this section) and the “results visualization” one (see step 5). - ABC section: it allows you to import some data (Upload data), filter the data (Data filtering), define the populations for which inferences should be done (one- or two-population tests, outgroups = here “Laboriosa”), and define some priors (by default, broad priors are highly recommended). Explore all these different menus. Each time, you are expected to tick the “please check/validate your choice,”so that everything turns green for the “Run ABC” step. But of course, you won’t be able to run the computations!! First, because it is expected to be relatively long (between 3 and 12 hours per run… yes it is still extremely fast for ABC!), and second, imagine 30 participants connecting to the same cluster and launching up to 5 ABC analyses (which remains highly demanding in resources, even under DILS) simultaneously! No, impossible! But at least, you can perform all the steps except the last one that would have allowed you to launch the job on the cluster. And you will know how to do, if you want to test on your own ;)</p>
+<p>You can try with one of the two input files I provided and that you can directly download from the physalia cluster (see ~/Day3_demography/data-honeybees/ABC-based_DILS/inputfiles).</p>
+<p>Thanks to this first step, you should be able to answer the following questions: How many individuals are present in the dataset? How many loci? Why does this file contain sequence data from three species even if demographic modeling can be performed with one- or two-population models?</p>
+</section>
+<section id="step-5-explore-results-of-inferences-under-dils" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-explore-results-of-inferences-under-dils">Step 5: Explore results of inferences under DILS</h3>
+<p>This section will be associated with the other menu in DILS: - Results visualization. This section allows you to explore the results of the various inferences performed using DILS and gain valuable insights into the summary statistics, the best-inferred model, the optimal parameter values under the model, and to conduct essential model checking. All the models provided here assume a constant population size over TIME. Note that effective population size (N<sub>e</sub>) can vary both through time (i.e.&nbsp;during divergence, as we aimed to capture in steps 2 and 3 of this practical) and along the genome due to the effects of linked selection. While DILS did not model temporal changes in N<sub>e</sub> in the results provided here, it has still accounted for heterogeneities in effective population sizes across the genome.</p>
+<p><strong>First, upload the tar.gz archive (Results visualization &gt; Upload results).</strong></p>
+</section>
+<section id="observed-summary-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="observed-summary-statistics">5.1 Observed summary statistics</h3>
+<p>In the summary statistics (User’s dataset &gt; Observed summary statistics), A and B corresponds to population A and B, with A corresponding to the first population and B the second in the name of the archive, e.g.&nbsp;“Carnica_Caucasia_…” Carnica and Caucasia are A and B, respectively. For instance, piA corresponds to the nucleotide diversity of population A (Carnica in my example immediately above) For detailed information regarding the summary statistics, click on “Definitions of statistics and parameters”</p>
+<p>Questions: What were your two focal populations? Please make sure to write this information down somewhere! Do the populations exhibit a high proportion of SNPs with fixed differences (two distinct alleles)? Based on this information, which of the two populations is the most genetically diverse? What are the median diversity values, as well as the lowest and highest diversity values for each population? Are the two populations highly differentiated? What is their mean Fst value? How variable is Fst across the genomic windows (lowest/highest values)?</p>
+</section>
+<section id="model-choices" class="level3">
+<h3 class="anchored" data-anchor-id="model-choices">5.2 Model choices</h3>
+<p>Assuming two-population inferences, DILS is able to hiearchically performs four comparisons: /* 1: Current isolation vs.&nbsp;ongoing migration?i.e.&nbsp;determine whether populations support models with ongoing gene flow or complete isolation /* 2: Best model assuming current isolation or ongoing migration? Based on the outcome of the first test, DILS refines the comparison, DILS refines the comparison: If no ongoing migration is detected, it tests whether SI (Strict Isolation) or AM (Ancient Migration) is the better fit. If ongoing migration is supported, it compares IM (Isolation with Migration) and SC (Secondary Contact).<br>
+Briefly, these represent the four classic speciation scenarios. SI (strict isolation) corresponds to a population split at time T<sub>SPLIT</sub> (divergence time) from an ancestral diploid panmictic population of N<sub>a</sub> individuals. The two diploid populations evolve under constant sizes N<sub>1</sub> and N<sub>2</sub>. AM (ancient migration) is similar to SI but assumed that the two newly formed populations continue to exchange alleles until time T<sub>AM</sub> (then gene flow stopped until present). IM (isolation with migration or island model): the two populations continuously exchange alleles throughout the divergence (until present time). SC (secondary contact): the two populations first evolve in isolation, then experience a secondary contact and start exchanging alleles at time T<sub>SC</sub>. /* 3: Homogeneous or heterogeneous N<sub>e</sub> along the genome? Test if effective population sizes (N<sub>e</sub>) vary along the genome due to linked selection. Models may support homogeneous (Nhomo) or heterogeneous (Nhetero) N<sub>e</sub>. /*4 (OPTIONAL): Homogeneous or heterogeneous migration rates along the genome?<br>
+For models supporting ongoing migration, this step evaluates whether migration rates are consistent (Mhomo) or variable (Mhetero) across loci. Heterogeneous migration rates can identify loci that suggest isolation, enabling genome scans for selection through locus-specific ABC-based model comparisons. Unlike classical approaches relying on a single summary statistics, this method directly compares locus-specific models based on a large set of summary statistics. However, note that the potential of this approach for detecting barriers to gene flow still needs to be further assessed, both through simulations and empirical studies. This is why our practicals, focused on genome scan approaches, will not rely on such methods (the practicals on Thursday and Friday will use more common approaches). However, we can anticipate that in the near future, methods integrating the detection of both demography and selection will become increasingly available. This development is crucial, as selection within genomes can bias the accurate inference of past demography, while, reciprocally, past demographic events can bias the detection of selection footprints.</p>
+<p><strong>Questions</strong>: After navigating to User’s dataset &gt; Demographic inferences &gt; Multilocus model comparison, which models are best supported for your specific comparison? Are these model choices strongly supported based on the posterior probabilities? When you explore Locus specific model comparison, do you find loci that support models different from the one identified in the multilocus model comparison? Are these results consistent with your expectations derived from the summary statistics?</p>
+</section>
+<section id="estimated-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="estimated-parameters">5.3 Estimated parameters</h3>
+<p>Identifying the best model is an essential step, but exploring the parameter estimates under this model is equally crucial.. First, examining parameter estimates helps diagnose potential issues. For example, if posterior values for a parameter (e.g.&nbsp;divergence time T<sub>SPLIT</sub>) are close to the limits of the prior, this might indicate that the priors are constraining the model too strongly. Such constraints could influence conclusions, suggesting the need to redo the analysis with expanded priors. To investigate this, check the distributions in User’s dataset &gt; Demographic inferences &gt; Estimated Parameters &gt; Posterior.” Second, click on Highest Posterior Density to view the median and 95% confidence intervals for the posterior estimates.</p>
+<p><strong>Questions</strong>: Using the neural network and direct posterior (purple), are the posterior probabilities of effective population sizes large? The values represent the number of diploid individuals. Which population has the largest distribution? Which effective population size seems the most challenging to infer? Is this consistent with your observations? Beyond effective population sizes, focus on the inferred divergence time (TSPLIT). If AM or SC scenarios are supported, also consider TAM or TSC. These values are expressed in generations. Assuming one generation per year for honey bees (prior to domestication and hive use), is the inferred divergence recent? For AM or SC scenarios, are the inferred timings of these events recent?</p>
+</section>
+<section id="model-checking" class="level3">
+<h3 class="anchored" data-anchor-id="model-checking">5.4 Model checking</h3>
+<p>A critical step in demographic modeling is assessing how well the model fits the observed data. This involves verifying whether the simulations effectively reproduce the observed values of the summary statistics. While this might seem straightforward, this crucial step is too often neglected.</p>
+<p>First, I encourage you to use the PCA (User’s dataset &gt; Demographic inferences &gt; Goodness-of-fit test &gt; plot) to check whether the observed data (yellow dot) falls within the scatterplot of simulations. If the yellow dot is distant from all other dots, it suggests the simulations cannot replicate the observed dataset. This indicates that the inference results are likely wrong and should be reevaluated (e.g.&nbsp;check for issues regarding the data, the inputfile, too narrow priors, etc.). Next, examine which summary statistics from the real data align well with those from the simulations and identify any that deviate. This information is available in the “P-values” section. Summary statistics with significant p-values are those not well captured by the simulations. Finally, evaluate the joint Site Frequency Spectrum (jSFS), which is particularly important. Here, the jSFS (a two-dimensional SFS) was not directly used as a summary statistic for the ABC (as indicated by “noSFS” in the file name). From my perspective, this makes it even more interesting to check how well simulations reproduce the observed SFS independently of the ABC. Even when the SFS is used in simulations, examining the fit of the jSFS remains valuable (similarly to what is generally done for methods based on composite likelihood). In the “SFS” section, the observed jSFS corresponds to real data (top-left), while the expected SFS (top-right) is derived from the posterior set of simulations. The difference between the two former SFS are also shown (bottom-left) as well as the significance of this difference (bottom-right).</p>
+<p><strong>Questions:</strong> Does the PCA suggest that simulations (or a subset of them) reproduce the observed summary statistics? According to you, why might some gray points (not used for the posterior) be closer to the yellow dot than some purple points in the PCA? How many summary statistics are well captured versus not well captured for the ABC analysis you have selected? Understand the SFS. Why is there missing information in certain corners of the SFS (e.g.&nbsp;x=0 &amp; y=0)? How well does the jSFS align with the simulations? Are many bins in the SFS associated with significant p-values? Based on all the model checking you have now performed, are you confident in the results of these simulations?</p>
+<p>Congratulations on completing this practical on demographic modeling! If you still have time, consider revisiting Step 5 with a few additional tar.gz files to further explore the results. You may also want to have more precise information regarding the methods or the results, including the original GONE paper (Santiago et al.&nbsp;2020 MBE), the original DILS paper (Fraïsse et al.&nbsp;2021), the DILS manual, as well as my recent preprint on honey bees, in which I describe a bit more the results of the sections 3 to 5. These three files are available on ~/Day3_demography/data-honeybees/References.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
