@@ -1,0 +1,19 @@
+name2	name	elevation	lat	long	mean_toc	prec	leafunfold	poolsize
+L1	Laveyron, Luz Valley, France	131	43.75	-0.22	12.33	901	-1.333	20
+L8	Chèze, Luz Valley, France	803	42.92	-0.03	9.27	914	0.817	20
+L12	Gèdre, Luz Valley, France	1235	42.78	0.02	7.12	1016	1.011	20
+L16	Péguères, Luz Valley, France	1630	42.87	-0.12	6.58	982	1.724	18
+O1	Josbaig, Ossau Valley, France	259	43.22	-0.73	12.24	979	-1.309	20
+O8	Le Hourcq, Ossau Valley, France	841	42.9	-0.43	9.16	933	-0.324	20
+O12	Gabas, Ossau Valley, France	1194	42.88	-0.42	7.35	1031	0.036	20
+O16	Artouste, Ossau Valley, France	1614	42.88	-0.40	5.16	1164	0.427	10
+9	Saint Sauvant, France	155	46.38	0.12	11.78	786	-0.166	25
+97	Grésigne, France	310	44.04	1.75	12.05	791	-1.139	25
+124	Killarney, Ireland	50	52.01	-9.50	9.96	1362	4.084	25
+204	Bézanges, France	275	48.76	6.49	9.5	751	0.371	25
+217	Bercé, France	165	47.81	0.39	10.65	698	0.434	25
+218	Longchamp, France	235	47.26	5.31	10.59	801	-0.920	22
+219	Tronçais, France	245	46.68	2.83	10.63	742	1.35	25
+233	Vachères, France	650	43.98	5.63	10.22	797	-1.532	25
+253	Göhrde, Germany	85	53.1	10.86	8.3	635	0.953	25
+256	Lappwald, Germany	180	52.26	10.99	8.5	597	0.65	25
